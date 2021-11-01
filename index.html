@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>en2ne</title>
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+
+<body class="has-background-light">
+    <div class="container">
+        <div class="box">
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a class="navbar-item has-text-dark" href="#">
+                        <h1 class="subtitle"><strong>en2ne | English to Nepali Unicode Converter</strong></h1>
+                    </a>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <a class="icon" href="https://github.com/jarp0l/en2ne" target="_blank">
+                            <img class="image" src="static/images/github_logo.png" alt="GitHub">
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="box">
+                <div class="content">
+                    <label for="input" class="label">Input:</label>
+                    <textarea name="input" id="en-input" onkeyup="keyPressed()" cols="30" rows="3"
+                        class="textarea is-link" placeholder="Type something..."></textarea>
+                </div>
+
+                <div class="content">
+                    <button id="clear-button" class="button is-danger is-outlined is-small" title="Clear text"
+                        onclick="clearBtnPressed()">Clear</button>
+                </div>
+
+                <hr>
+
+                <div class="content">
+                    <label for="output" class="label">Output:</label>
+                    <textarea name="output" id="output" cols="30" rows="3" class="textarea is-primary"
+                        placeholder="Result will appear here" readonly></textarea>
+                </div>
+
+                <div class="content">
+                    <button id="copy-button" class="button is-success is-outlined is-small" title="Copy to clipboard"
+                        data-clipboard-target="#output">Copy</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="box">
+            <div class="content">
+                <h2 class="title">Tips</h2>
+                <div class="columns">
+                    <div class="column">
+                        <label class="label">Some letters:</label>
+                        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                            <tbody>
+                                <tr>
+                                    <th>Input</th>
+                                    <th>Output</th>
+                                </tr>
+                                <tr>
+                                    <td>Yna</td>
+                                    <td>ञ</td>
+                                </tr>
+                                <tr>
+                                    <td>ta</td>
+                                    <td>त</td>
+                                </tr>
+                                <tr>
+                                    <td>Ta</td>
+                                    <td>ट</td>
+                                </tr>
+                                <tr>
+                                    <td>tha</td>
+                                    <td>थ</td>
+                                </tr>
+                                <tr>
+                                    <td>Tha</td>
+                                    <td>ठ</td>
+                                </tr>
+                                <tr>
+                                    <td>da</td>
+                                    <td>द</td>
+                                </tr>
+                                <tr>
+                                    <td>Da</td>
+                                    <td>ड</td>
+                                </tr>
+                                <tr>
+                                    <td>dha</td>
+                                    <td>ध</td>
+                                </tr>
+                                <tr>
+                                    <td>Dha</td>
+                                    <td>ढ</td>
+                                </tr>
+                                <tr>
+                                    <td>na</td>
+                                    <td>न</td>
+                                </tr>
+                                <tr>
+                                    <td>Na</td>
+                                    <td>ण</td>
+                                </tr>
+                                <tr>
+                                    <td>sha</td>
+                                    <td>श</td>
+                                </tr>
+                                <tr>
+                                    <td>shha</td>
+                                    <td>ष</td>
+                                </tr>
+                                <tr>
+                                    <td>kshha</td>
+                                    <td>क्ष</td>
+                                </tr>
+                                <tr>
+                                    <td>jYna</td>
+                                    <td>ज्ञ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="column">
+                        <label class="label">Some other special characters:</label>
+                        <div class="table-container">
+                            <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+                                <tbody>
+                                    <tr>
+                                        <th>Input</th>
+                                        <th>Output</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                    <tr>
+                                        <td>rr</td>
+                                        <td>र्‍</td>
+                                        <td><i>as in</i> garryo = गर्‍यो</td>
+                                    </tr>
+                                    <tr>
+                                        <td>i</td>
+                                        <td>इ</td>
+                                        <td><i>as in</i> miti = मिति</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ii</td>
+                                        <td>ई</td>
+                                        <td><i>as in</i> nepaalii = नेपाली</td>
+                                    </tr>
+                                    <tr>
+                                        <td>^</td>
+                                        <td>ं </td>
+                                        <td>अनुस्वर</td>
+                                    </tr>
+                                    <tr>
+                                        <td>*</td>
+                                        <td>ँ</td>
+                                        <td>चन्द्रबिन्दु</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="static/js/InputClass.js"></script>
+    <script type="text/javascript" src="static/js/Unicode.js"></script>
+    <script type="text/javascript" src="static/js/Operation.js"></script>
+    <script type="text/javascript" src="static/js/clipboard.min.js"></script>
+    <!-- <script src="https://unpkg.com/clipboard@2/dist/clipboard.min.js"></script> -->
+    <script type="text/javascript" src="static/js/main.js"></script>
+</body>
+
+</html>
