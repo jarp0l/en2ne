@@ -10,19 +10,21 @@
     <link rel="stylesheet" href="static/css/main.css">
 </head>
 
-<body class="has-background-light">
+<body class="has-background-light" onload="checkQueryStr()">
     <div class="container">
         <div class="box">
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <a class="navbar-item has-text-dark" href="#">
-                        <h1 class="subtitle"><strong>en2ne | English to Nepali Unicode Converter</strong></h1>
+                        <h1 class="subtitle">
+                            <strong>en2ne | English to Nepali Unicode Converter</strong>
+                        </h1>
                     </a>
                 </div>
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <a class="icon" href="https://github.com/jarp0l/en2ne" target="_blank">
-                            <img class="image" src="static/images/github_logo.png" alt="GitHub">
+                            <img class="image" src="static/images/github_logo.png" alt="GitHub" title="Source Code">
                         </a>
                     </div>
                 </div>
@@ -36,12 +38,31 @@
                 <div class="content">
                     <label for="input" class="label">Input:</label>
                     <textarea name="input" id="en-input" onkeyup="keyPressed()" cols="30" rows="3"
-                        class="textarea is-link" placeholder="Type something..."></textarea>
+                        class="textarea is-link" placeholder="Type something..." spellcheck="false"></textarea>
                 </div>
 
                 <div class="content">
-                    <button id="clear-button" class="button is-danger is-outlined is-small" title="Clear text"
-                        onclick="clearBtnPressed()">Clear</button>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field is-horizontal is-grouped">
+                                <p class="control">
+                                    <button id="convert-button" class="button is-success is-small is-focused"
+                                        title="Convert text" onclick="keyPressed()">Convert</button>
+                                </p>
+                                <p class="control is-expanded has-text-centered">
+                                    <label class="checkbox">
+                                        <input id="auto-convert-checkbox" type="checkbox" checked="checked">
+                                        Auto Convert
+                                    </label>
+                                </p>
+                                <p class="control is-expanded">
+                                    <button id="clear-button" class="button is-danger is-outlined is-small"
+                                        title="Clear input text" onclick="clearBtnPressed()">Clear</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column"></div>
+                    </div>
                 </div>
 
                 <hr>
@@ -49,12 +70,32 @@
                 <div class="content">
                     <label for="output" class="label">Output:</label>
                     <textarea name="output" id="output" cols="30" rows="3" class="textarea is-primary"
-                        placeholder="Result will appear here" readonly></textarea>
+                        placeholder="Result will appear here" spellcheck="false" readonly></textarea>
                 </div>
 
                 <div class="content">
-                    <button id="copy-button" class="button is-success is-outlined is-small" title="Copy to clipboard"
-                        data-clipboard-target="#output">Copy</button>
+                    <div class="columns">
+                        <div class="column is-2">
+                            <button id="copy-button" class="button is-success is-small is-focused"
+                                title="Copy output to clipboard" data-clipboard-target="#output">Copy
+                                Output</button>
+                        </div>
+                        <div class="column is-6">
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <button id="share-btn" class="button is-link is-small"
+                                        title="Share input text (Base64 encoded)">Share Input</button>
+                                </p>
+                                <p class="control">
+                                    <input type="text" id="input-url" class="input text is-small has-background-light"
+                                        data-autoselect="" value="https://jarp0l.github.io/en2ne/index.html?input="
+                                        size=64 readonly>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,21 +191,31 @@
                                     <tr>
                                         <td>rr</td>
                                         <td>र्‍</td>
-                                        <td><i>as in</i> garryo = गर्‍यो</td>
+                                        <td>
+                                            <i>as in</i>
+                                            garryo = गर्‍यो
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>i</td>
                                         <td>इ</td>
-                                        <td><i>as in</i> miti = मिति</td>
+                                        <td>
+                                            <i>as in</i>
+                                            miti = मिति
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>ii</td>
                                         <td>ई</td>
-                                        <td><i>as in</i> nepaalii = नेपाली</td>
+                                        <td>
+                                            <i>as in</i>
+                                            nepaalii = नेपाली
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>^</td>
-                                        <td>ं </td>
+                                        <td>ं
+                                        </td>
                                         <td>अनुस्वर</td>
                                     </tr>
                                     <tr>
@@ -180,8 +231,6 @@
             </div>
         </div>
     </div>
-
-
     <script type="text/javascript" src="static/js/InputClass.js"></script>
     <script type="text/javascript" src="static/js/Unicode.js"></script>
     <script type="text/javascript" src="static/js/Operation.js"></script>
